@@ -1,6 +1,6 @@
 # Compiler and flags
 CXX = g++ -g
-CXXFLAGS = -Wall -Werror -pedantic -Wshadow -std=c++11
+CXXFLAGS = -Wall -Werror -pedantic -Wshadow -std=c++14
 
 # SDL2 flags (includes and libraries)
 LDFLAGS = -lssl -lcrypto
