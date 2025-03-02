@@ -1,17 +1,27 @@
 #include "command.h"
 
 
-std::string Command::generate_uid() { return "A" + std::to_string(++m_uid); }
-
-void Command::createCommand(CommandType commandType) {
-  m_text = ToString(commandType);
- }
+void Command::generate_uid() { this->m_text = "A" + std::to_string(++m_uid) + " "; }
 
 Command* Command::p_command{ nullptr};
 
 Command::Command(){}
 Command::~Command(){}
 
-std::string Command::toString() {
-  return std::to_string(this->m_uid); + " " + ToString(this->m_command_type) + " " + this->m_text;
+void Command::set_text(std::string text){
+  this->m_text.append(text);
+}
+
+std::string Command::get_text(){
+  return this->m_text;
+}
+
+int Command::m_uid = 0;
+
+void Command::set_command_type(CommandType command_type){
+  this->m_command_type = command_type;
+}
+
+CommandType Command::get_command_type(){
+  return this->m_command_type;
 }

@@ -76,13 +76,12 @@ void SSLClient::read_ssl() {
       m_cv.notify_all(); // Notify main thread of error
       break;
     }
-	std::cout << "Buffer: " <<buffer<< std::endl;
   }
 }
 
 int SSLClient::write_ssl(std::string command) {
   m_ret = BIO_write(m_bio, command.c_str(), command.length());
-  std::cout << "Command Written: Reply: " << m_ret << std::endl;
+  std::cout << "Command Written:" <<command<<" Reply: " << m_ret << std::endl;
   if (m_ret <= 0) {
     ERR_print_errors_fp(stderr);
     BIO_free_all(m_bio);

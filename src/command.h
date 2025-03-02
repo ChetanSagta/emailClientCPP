@@ -3,31 +3,27 @@
  
 enum CommandType {
   CAPABILITY,
-  LOGIN
+  LOGIN,
+  FETCH,
+  STARTTLS,
+  NOOP
 };
-
-inline const std::string ToString(CommandType v) {
-    switch (v)
-    {
-        case CAPABILITY:   return "Capability";
-        case LOGIN:   return "";
-        default:      return "[Unknown CommandType]";
-    }
-}
 
 class Command {
 
 public:
-  void createCommand(CommandType);
   std::string toString();
-  std::string generate_uid();
+  void generate_uid();
+  void set_text(std::string);
+  void set_command_type(CommandType);
+  CommandType get_command_type();
+  std::string get_text();
   Command();
   ~Command();
   
 private:
   static Command *p_command;
-  int m_uid = 0;
+  static int m_uid;
   std::string m_text;
   CommandType m_command_type;
 };
-

@@ -11,8 +11,8 @@ public:
   ~EmailClient();
   void run();
   void fetchEmail();
+  void login();
  private:
   IMAP *m_imap;
-
   
 };

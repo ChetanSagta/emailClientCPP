@@ -4,6 +4,7 @@
 #include <mutex>
 #include <string>
 #include <vector>
+#include <map>
 #include "command.h"
 
 enum IMAP_State{
@@ -32,4 +33,6 @@ private:
   SSLClient *m_client;
   std::string m_response;			
   IMAP_State m_imapState;
+  std::string username, password;
+  std::map<std::string, CommandType> m_commands_written;
 };
